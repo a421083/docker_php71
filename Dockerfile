@@ -112,7 +112,7 @@ RUN set -xe \
 #    && docker-php-ext-install tideways 
 
 # compile a extension
-ENV SWOOLE_VERSION=4.6.3
+ENV SWOOLE_VERSION=4.5.2
 RUN set -xe \
     && curl -fSL http://pecl.php.net/get/swoole-${SWOOLE_VERSION}.tgz -o swoole.tar.gz \
     && mkdir -p /tmp/swoole \
