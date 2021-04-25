@@ -3,7 +3,7 @@ FROM php:7.1.27-alpine
 WORKDIR /data/web
 
 ADD php.ini /usr/local/etc/php/
-ADD www.conf /usr/local/etc/php-fpm.d/
+#ADD www.conf /usr/local/etc/php-fpm.d/
 RUN chmod 777 /data/web/ -R
 
 #安装调用组件
