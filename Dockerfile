@@ -1,4 +1,4 @@
-FROM php:7.1.27-alpine
+FROM php:7.1.27-fpm-alpine
 
 WORKDIR /data/web
 
