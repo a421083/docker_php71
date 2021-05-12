@@ -187,14 +187,14 @@ RUN set -xe \
 
 RUN rm -rf /tmp/* && rm -rf /var/cache/apk/*
 
-ENV GRPC=1.12.0
+ENV GRPC=1.30.0
 # compile grpc extension
 RUN set -xe \
     && curl -fSL http://pecl.php.net/get/grpc-${GRPC}.tgz -o grpc.tar.gz \
     && mkdir -p /tmp/grpc \
-    && tar -xf grpc.tar.gz -C /tmp/grpc \
+    && tar -xf grpc.tar.gz -C /tmp/grpc --strip-components=1 \
     && rm grpc.tar.gz \
-    && docker-php-ext-configure /tmp/grpc --enable-grpcs \
+    && docker-php-ext-configure /tmp/grpc --enable-grpc \
     && docker-php-ext-install /tmp/grpc \
     && rm -r /tmp/grpc
 
