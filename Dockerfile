@@ -193,7 +193,7 @@ RUN set -xe \
     && curl -fSL http://pecl.php.net/get/grpc-${GRPC}.tgz -o grpc.tar.gz \
     && mkdir -p /tmp/grpc \
     && tar -xf grpc.tar.gz -C /tmp/grpc \
-    && rm swoole.tar.gz \
+    && rm grpc.tar.gz \
     && docker-php-ext-configure /tmp/grpc --enable-grpcs \
     && docker-php-ext-install /tmp/grpc \
     && rm -r /tmp/grpc
