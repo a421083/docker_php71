@@ -187,7 +187,7 @@ RUN set -xe \
 
 RUN rm -rf /tmp/* && rm -rf /var/cache/apk/*
 
-ENV GRPC=1.30.0
+ENV GRPC=1.12.0
 # compile grpc extension
 RUN set -xe \
     && curl -fSL http://pecl.php.net/get/grpc-${GRPC}.tgz -o grpc.tar.gz \
