@@ -198,6 +198,17 @@ RUN set -xe \
     && docker-php-ext-install /tmp/grpc \
     && rm -r /tmp/grpc
 
+ENV PROTOBUF=3.13.0
+# compile protobuf extension
+RUN set -xe \
+    && curl -fSL http://pecl.php.net/get/protobuf-${PROTOBUF}.tgz -o protobuf.tar.gz \
+    && mkdir -p /tmp/protobuf \
+    && tar -xf protobuf.tar.gz -C /tmp/protobuf --strip-components=1 \
+    && rm protobuf.tar.gz \
+    && docker-php-ext-configure /tmp/protobuf --enable-protobuf \
+    && docker-php-ext-install /tmp/protobuf \
+    && rm -r /tmp/protobuf
+
 RUN rm -rf /tmp/* && rm -rf /var/cache/apk/*
 
 RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
