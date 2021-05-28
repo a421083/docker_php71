@@ -217,7 +217,7 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
   && mv composer.phar /usr/local/bin/composer
 
 
-RUN mkdir -p  /var/lib/apt/lists/ && RUN cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
+RUN mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
 && cd protobuf && git submodule update --init --recursive && ./autogen.sh \
 && ./configure --prefix=/usr/local/ && make && make install && ldconfig
 
