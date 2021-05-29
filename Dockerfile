@@ -26,6 +26,8 @@ RUN chmod 777 /data/web/ -R
 #  libxml2 \
 #  libzip-dev 
 
+RUN apk add autoconf automake make cmake
+
 # add packages
 RUN apk add supervisor git bash openssl openssh
 RUN apk add autoconf g++ make cmake pcre-dev re2c
