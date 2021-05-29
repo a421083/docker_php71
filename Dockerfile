@@ -14,7 +14,7 @@ RUN chmod 777 /data/web/ -R
 #  git \
 #  openssl-dev \
 #  autoconf \
-#  g++ make cmake \
+#  g++ make cmake  \
 #  pcre-dev \
 #  re2c \
 #  libmemcached-dev zlib-dev libgsasl-dev cyrus-sasl-dev \
@@ -25,6 +25,8 @@ RUN chmod 777 /data/web/ -R
 #  libmcrypt-dev \
 #  libxml2 \
 #  libzip-dev 
+
+RUN apk add autoconf automake make cmake
 
 # add packages
 RUN apk add supervisor git bash openssl openssh
