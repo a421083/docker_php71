@@ -41,6 +41,7 @@ RUN apk add libzip-dev
 RUN docker-php-ext-install gd
 #RUN docker-php-ext-install intl
 RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
 #RUN docker-php-ext-install zip
