@@ -46,6 +46,7 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
 #RUN docker-php-ext-install zip
 #RUN pecl install igbinary && docker-php-ext-enable igbinary
+
 ENV IGBINARY_VERSION=3.0.1
 RUN set -xe \
     && curl -fSL http://pecl.php.net/get/igbinary-${IGBINARY_VERSION}.tgz -o igbinary.tar.gz \
