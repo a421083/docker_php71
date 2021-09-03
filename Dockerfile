@@ -35,13 +35,14 @@ RUN apk add linux-headers zlib-dev openssl-dev
 RUN apk add libmcrypt-dev libxslt-dev
 RUN apk add freetype freetype-dev libpng-dev libjpeg-turbo-dev libwebp-dev
 RUN apk add libzip-dev
-#RUN apk add nginx go nodejs
+RUN apk add postgresql-dev
 
+#RUN apk add nginx go nodejs
 # install some extension
 RUN docker-php-ext-install gd
 #RUN docker-php-ext-install intl
 RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
 #RUN docker-php-ext-install zip
