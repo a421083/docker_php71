@@ -224,11 +224,13 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
   && mv composer.phar /usr/local/bin/composer
 
 
-RUN mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
+RUN set -xe \
+&& mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
 && cd protobuf && git submodule update --init --recursive && sh autogen.sh \
 && ./configure --prefix=/usr/local/ && make && make install && ldconfig
 
-RUN cd /usr/local/ && git clone -b v1.37.0 https://github.com/grpc/grpc \
+RUN set -xe \
+&& cd /usr/local/ && git clone -b v1.37.0 https://github.com/grpc/grpc \
 && cd grpc && git submodule update --init && mkdir -p cmake/build \
 && cd cmake/build && cmake ../.. && make protoc grpc_php_plugin
 
