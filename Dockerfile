@@ -30,12 +30,13 @@ RUN apk add autoconf automake make cmake
 
 # add packages
 RUN apk add supervisor git bash openssl openssh
-RUN apk add autoconf g++ make cmake pcre-dev re2c
+RUN apk add autoconf g++ make cmake pcre-dev re2c automake
 RUN apk add linux-headers zlib-dev openssl-dev
 RUN apk add libmcrypt-dev libxslt-dev
 RUN apk add freetype freetype-dev libpng-dev libjpeg-turbo-dev libwebp-dev
 RUN apk add libzip-dev
 RUN apk add postgresql-dev
+RUN apk add libtool libsysfs-dev m4
 
 #RUN apk add nginx go nodejs
 # install some extension
@@ -223,7 +224,7 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
 
 
 RUN mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
-&& cd protobuf && git submodule update --init --recursive && ./autogen.sh \
+&& cd protobuf && git submodule update --init --recursive && sh autogen.sh \
 && ./configure --prefix=/usr/local/ && make && make install && ldconfig
 
 RUN cd /usr/local/ && git clone -b v1.37.0 https://github.com/grpc/grpc \
