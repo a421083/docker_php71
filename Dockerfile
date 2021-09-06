@@ -36,7 +36,8 @@ RUN apk add libmcrypt-dev libxslt-dev
 RUN apk add freetype freetype-dev libpng-dev libjpeg-turbo-dev libwebp-dev
 RUN apk add libzip-dev
 RUN apk add postgresql-dev
-RUN apk add libtool libsysfs-dev m4
+RUN apk add libtool
+RUN apk add m4
 
 #RUN apk add nginx go nodejs
 # install some extension
