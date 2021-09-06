@@ -227,7 +227,7 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
 RUN set -xe \
 && mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
 && cd protobuf && git submodule update --init --recursive && sh autogen.sh \
-&& ./configure --prefix=/usr/local/ && make && make install && ldconfig
+&& ./configure --prefix=/usr/local/ && make && make install
 
 RUN set -xe \
 && cd /usr/local/ && git clone -b v1.37.0 https://github.com/grpc/grpc \
