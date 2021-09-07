@@ -35,7 +35,7 @@ RUN apk add linux-headers zlib-dev openssl-dev
 RUN apk add libmcrypt-dev libxslt-dev
 RUN apk add freetype freetype-dev libpng-dev libjpeg-turbo-dev libwebp-dev
 RUN apk add libzip-dev
-#RUN apk add postgresql-dev
+RUN apk add postgresql-dev
 RUN apk add libtool
 RUN apk add m4
 
@@ -44,7 +44,7 @@ RUN apk add m4
 RUN docker-php-ext-install gd
 #RUN docker-php-ext-install intl
 RUN docker-php-ext-install pdo_mysql
-#RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
 #RUN docker-php-ext-install zip
@@ -62,15 +62,15 @@ RUN set -xe \
 
   
 # compile phalcon
-ENV PHALCON_VERSION=3.4.3
-RUN curl -fSL https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz -o cphalcon.tar.gz \
-    && mkdir -p cphalcon \
-    && tar -xf cphalcon.tar.gz -C cphalcon --strip-components=1 \
-    && rm cphalcon.tar.gz \
-    && cd cphalcon/build \
-    && sh install \
-    && rm -rf cphalcon \
-    && docker-php-ext-enable phalcon
+#ENV PHALCON_VERSION=3.4.3
+#RUN curl -fSL https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz -o cphalcon.tar.gz \
+#    && mkdir -p cphalcon \
+#    && tar -xf cphalcon.tar.gz -C cphalcon --strip-components=1 \
+#    && rm cphalcon.tar.gz \
+#    && cd cphalcon/build \
+#    && sh install \
+#    && rm -rf cphalcon \
+#    && docker-php-ext-enable phalcon
 
 # add mongodb extension
 #RUN set -xe && \
@@ -224,14 +224,14 @@ RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.ph
   && mv composer.phar /usr/local/bin/composer
 
 
-#RUN set -xe \
-#&& mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
-#&& cd protobuf && git submodule update --init --recursive && sh autogen.sh \
-#&& ./configure --prefix=/usr/local/ && make && make install
+RUN set -xe \
+&& mkdir -p  /var/lib/apt/lists/ && cd /var/lib/apt/lists/ && git clone https://github.com/google/protobuf.git \
+&& cd protobuf && git submodule update --init --recursive && sh autogen.sh \
+&& ./configure --prefix=/usr/local/ && make && make install && ldconfig
 
-#RUN set -xe \
-#&& cd /usr/local/ && git clone -b v1.37.0 https://github.com/grpc/grpc \
-#&& cd grpc && git submodule update --init && mkdir -p cmake/build \
-#&& cd cmake/build && cmake ../.. && make protoc grpc_php_plugin
+RUN set -xe \
+&&cd /usr/local/ && git clone -b v1.37.0 https://github.com/grpc/grpc \
+&& cd grpc && git submodule update --init && mkdir -p cmake/build \
+&& cd cmake/build && cmake ../.. && make protoc grpc_php_plugin
 
-#RUN rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
