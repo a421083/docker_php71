@@ -38,7 +38,6 @@ RUN apk add libzip-dev
 RUN apk add postgresql-dev
 RUN apk add libtool
 RUN apk add m4
-
 #RUN apk add nginx go nodejs
 # install some extension
 RUN docker-php-ext-install gd
