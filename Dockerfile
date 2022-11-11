@@ -47,6 +47,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
+RUN docker-php-ext-install xdebug
 #RUN docker-php-ext-install zip
 #RUN pecl install igbinary && docker-php-ext-enable igbinary
 
