@@ -47,6 +47,7 @@ RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
 RUN docker-php-ext-install xdebug
+RUN docker-php-ext-install gmp
 #RUN docker-php-ext-install zip
 #RUN pecl install igbinary && docker-php-ext-enable igbinary
 
@@ -219,7 +220,7 @@ RUN set -xe \
 RUN rm -rf /tmp/* && rm -rf /var/cache/apk/*
 
 RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
-    && php composer-setup.php --2 \
+    && php composer-setup.php --1 \
    && php -r "unlink('composer-setup.php');" \
   && mv composer.phar /usr/local/bin/composer
 
