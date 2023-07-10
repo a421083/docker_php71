@@ -38,6 +38,7 @@ RUN apk add libzip-dev
 RUN apk add postgresql-dev
 RUN apk add libtool
 RUN apk add m4
+RUN apk add gmp gmp-dev
 #RUN apk add nginx go nodejs
 # install some extension
 RUN docker-php-ext-install gd
@@ -46,6 +47,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install sysvsem
+RUN docker-php-ext-install gmp
 #RUN docker-php-ext-install zip
 #RUN pecl install igbinary && docker-php-ext-enable igbinary
 
